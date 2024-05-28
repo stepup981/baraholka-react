@@ -29,9 +29,9 @@ const FilterProducts = (props) => {
   //   dispatch(clearActiveCategories())
   // }, [])
 
-  // useEffect(() => {
-  //   console.log("Active Categories:", activeCategories);
-  // }, [activeCategories]);
+  useEffect(() => {
+    console.log("Active Categories:", activeCategories);
+  }, [activeCategories]);
   
 
   const renderCategories = (arr) =>
