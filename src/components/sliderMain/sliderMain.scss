@@ -1,0 +1,28 @@
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+
+  img {
+    max-height: 500px;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--mainBlack);
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--activeLink);
+  }
+}
+
+.swiper-pagination-bullet {
+  background: var(--mainBlack);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--activeLink);
+}

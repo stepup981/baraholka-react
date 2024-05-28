@@ -1,0 +1,13 @@
+.btn {
+  background-color: white;
+  border: 1px solid var(--mainBlack);
+  padding: 0;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--activeLink);
+  }
+}

@@ -1,0 +1,28 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    gap: 8px;
+  }
+
+  li {
+    cursor: pointer;
+
+    a {
+      &:hover {
+        color: var(--activeLink);
+      }
+    }
+  }
+
+  a.active {
+    border-bottom: 1px solid var(--activeLink);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}

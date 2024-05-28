@@ -1,0 +1,32 @@
+.header {
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 4;
+  border-bottom: 1px solid var(--border);
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px;
+  }
+
+  &__title {
+    font-size: 20px;
+
+    span {
+      color: rgba(255, 0, 0, 0.568);
+    }
+  }
+
+  &__bag {
+    cursor: pointer;
+
+    img {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

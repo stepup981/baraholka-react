@@ -1,0 +1,45 @@
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+strong {
+  font-weight: 700;
+}
+
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: -internal-light-dark(rgb(59, 228, 8), rgba(19, 224, 0, 0.4)) !important;
+  color: fieldtext !important;
+}
+
