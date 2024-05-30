@@ -33,7 +33,7 @@ class Api {
     return this.makeRequest("categories");
   }
 
-  getProducts(categoriesFilter) {
+  getProducts() {
     const statusQuery = false;
     return this.makeRequest("products", "GET", statusQuery);
   }
@@ -42,8 +42,12 @@ class Api {
     return this.makeRequest("bag");
   }
 
-  addProductOnBag(data) {
-    return this.makeRequest("bag", "POST");
+  addProductOnBag(product) {
+    return this.makeRequest("bag", "POST", true, JSON.stringify(product));
+  }
+
+  removeProductOnBag() {
+    return this.makeRequest("bag", "DELETE");
   }
 }
 

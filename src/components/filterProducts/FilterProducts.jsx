@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import {
   setActiveCategories,
   clearActiveCategories,
 } from "@store/categoriesSlice/categoriesSlice";
-
+import { setSearchInput } from "@store/productsSlice/productsSlice";
 
 import Button from "@components/UI/button/Button";
 import { filterPrice } from "@helpers/filterProducts/FilterProducts";
@@ -21,18 +21,12 @@ const FilterProducts = (props) => {
     (state) => state.categories.activeCategories
   );
   const [isOpen, setIsOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const [searchPrice, setSearchPrice] = useState('');
+  const [searchPrice, setSearchPrice] = useState("");
 
   // useEffect(() => () => {
   //   console.log('типо размонтирован')
   //   dispatch(clearActiveCategories())
   // }, [])
-
-  useEffect(() => {
-    console.log("Active Categories:", activeCategories);
-  }, [activeCategories]);
-  
 
   const renderCategories = (arr) =>
     arr.map((item) => {
@@ -70,21 +64,22 @@ const FilterProducts = (props) => {
   };
 
   const applyFilter = () => {
-    const categoryParams = activeCategories.map(category => `category=${category}`).join('&')
-    let categoryPrice = searchPrice
+    const categoryParams = activeCategories
+      .map((category) => `category=${category}`)
+      .join("&");
+    let categoryPrice = searchPrice;
     switch (categoryPrice) {
-      case 'lowToHigh':
-        categoryPrice = 'sortBy=price'
+      case "lowToHigh":
+        categoryPrice = "&sortBy=price";
         break;
       case "highToLow":
-        categoryPrice = 'sortBy=-price'
+        categoryPrice = "&sortBy=-price";
         break;
       default:
-        categoryPrice = ''
+        categoryPrice = "";
     }
-    console.log(categoryPrice)
-    navigate(`?${categoryParams}`)
-    dispatch(getProducts())
+    navigate(`?${categoryParams}${categoryPrice}`);
+    dispatch(getProducts());
   };
 
   const category = renderCategories(categories);
@@ -105,9 +100,14 @@ const FilterProducts = (props) => {
           {category}
         </ul>
       </div>
-      <select className="filter__price" onChange={(e) => setSearchPrice(e.target.value)}>{price}</select>
+      <select
+        className="filter__price"
+        onChange={(e) => setSearchPrice(e.target.value)}
+      >
+        {price}
+      </select>
       <div className="filter__search">
-        <input type="text" placeholder="Print item name" />
+        <input type="text" placeholder="Print item name" onChange={(e) => dispatch(setSearchInput(e.target.value))}/>
       </div>
     </div>
   );

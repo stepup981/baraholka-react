@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "@store/productsSlice/productsActions";
 import { getCategories } from "@store/categoriesSlice/categoriesAction";
+import { clearActiveCategories, setActiveCategories } from "../../store/categoriesSlice/categoriesSlice";
+
+import { filteredProducts } from "@store/productsSlice/productsSelector";
 
 import ProductsBlock from "@components/productsBlock/ProductsBlock";
 import FilterProducts from "@components/filterProducts/FilterProducts";
@@ -12,13 +15,20 @@ import productspage from "@pages/productsPage/productsPage.scss";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
   const categories = useSelector((state) => state.categories.categories);
   const isLoading = useSelector((state) => state.loader.isLoading);
+  const productsFiltered = useSelector(filteredProducts)
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   return () => {
+  //     console.log('типо размонтирован')
+  //     dispatch(clearActiveCategories())
+  //   }
+  // }, [])
 
   useEffect(() => {
     dispatch(getCategories());
@@ -31,7 +41,7 @@ const ProductsPage = () => {
       ) : (
         <section className="products">
           <FilterProducts categories={categories} />
-          <ProductsBlock products={products} />
+          <ProductsBlock products={productsFiltered} />
         </section>
       )}
     </>

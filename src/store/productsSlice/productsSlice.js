@@ -3,12 +3,17 @@ import { getProducts } from "./productsActions";
 
 const initialState = {
   products: [],
+  searchInput: ''
 };
 
 const productsSlise = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchInput(state, action) {
+      state.searchInput = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getProducts.pending, (state) => {})
@@ -21,4 +26,5 @@ const productsSlise = createSlice({
   },
 });
 
+export const { setSearchInput } = productsSlise.actions;
 export default productsSlise.reducer;
