@@ -38,6 +38,16 @@ class Api {
     return this.makeRequest("products", "GET", statusQuery);
   }
 
+  rebaseStatusOnBag(statusOnBag) {
+    const { id, onBag } = statusOnBag;
+    return this.makeRequest(
+      `products/${id}`,
+      "PATCH",
+      true,
+      JSON.stringify({ onBag: onBag })
+    );
+  }
+
   getBag() {
     return this.makeRequest("bag");
   }
@@ -46,8 +56,13 @@ class Api {
     return this.makeRequest("bag", "POST", true, JSON.stringify(product));
   }
 
-  removeProductOnBag() {
-    return this.makeRequest("bag", "DELETE");
+  removeProductOnBag(productId) {
+    return this.makeRequest(
+      `bag/${productId}`,
+      "DELETE",
+      true,
+      JSON.stringify({ id: productId })
+    );
   }
 }
 

@@ -5,7 +5,7 @@ import {
 } from "@store/loaderSlice/loaderSlice";
 import api from "@api/api";
 
-export const getProducts = createAsyncThunk(
+ const getProducts = createAsyncThunk(
   "products/getProducts",
   async (_, { dispatch }) => {
     dispatch(incrementLoading());
@@ -14,3 +14,10 @@ export const getProducts = createAsyncThunk(
     return response;
   }
 );
+
+const rebaseStatusOnBag = createAsyncThunk("products/rebaseStatusOnBag", (status) => {
+  const response = api.rebaseStatusOnBag(status)
+  return response
+})
+
+export {getProducts, rebaseStatusOnBag}

@@ -18,8 +18,8 @@ const addProductOnBag = createAsyncThunk("bag/addProductOnBag", (product) => {
   return response;
 })
 
-const removeProductOnBag = createAsyncThunk("bag/removeProductOnBag", () => {
-  const response = api.removeProductOnBag();
+const removeProductOnBag = createAsyncThunk("bag/removeProductOnBag", (productId) => {
+  const response = api.removeProductOnBag(productId);
   return response;
 });
 

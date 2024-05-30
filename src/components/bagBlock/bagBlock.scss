@@ -1,2 +1,7 @@
 .bag-block {
+  display:  flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin:  0 auto;
+  width: fit-content;
 }

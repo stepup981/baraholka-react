@@ -1,10 +1,16 @@
-import productCard from "@components/productCard/ProductCard"
+import ProductCard from "@components/productCard/ProductCard";
 
-const BagBlock = ({productsBag}) => {
+import bagBlock from "@components/bagBlock/bagBlock.scss";
 
-  console.log(productsBag)
+const BagBlock = ({ productsBag }) => {
+  const renderCards = (arr) => {
+    return arr.map(({ ...props }) => (
+      <ProductCard key={props.id} {...props}></ProductCard>
+    ));
+  };
+  const cardElem = renderCards(productsBag);
 
-  return <div className="bag-block">bla-bla</div>;
+  return <div className="bag-block">{cardElem}</div>;
 };
 
 export default BagBlock;

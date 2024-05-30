@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import NavigationBar from "@components/navigationBar/NavigationBar";

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "@store/productsSlice/productsActions";
 import { getCategories } from "@store/categoriesSlice/categoriesAction";
-import { clearActiveCategories, setActiveCategories } from "../../store/categoriesSlice/categoriesSlice";
+import { clearActiveCategories } from "../../store/categoriesSlice/categoriesSlice";
 
 import { filteredProducts } from "@store/productsSlice/productsSelector";
 

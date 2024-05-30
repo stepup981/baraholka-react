@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { getProducts } from "@store/productsSlice/productsActions";
-import {
-  setActiveCategories,
-  clearActiveCategories,
-} from "@store/categoriesSlice/categoriesSlice";
+import { setActiveCategories } from "@store/categoriesSlice/categoriesSlice";
 import { setSearchInput } from "@store/productsSlice/productsSlice";
 
 import Button from "@components/UI/button/Button";
+
 import { filterPrice } from "@helpers/filterProducts/FilterProducts";
 import filterProducts from "@components/filterProducts/filterProducts.scss";
 
@@ -22,11 +20,6 @@ const FilterProducts = (props) => {
   );
   const [isOpen, setIsOpen] = useState(false);
   const [searchPrice, setSearchPrice] = useState("");
-
-  // useEffect(() => () => {
-  //   console.log('типо размонтирован')
-  //   dispatch(clearActiveCategories())
-  // }, [])
 
   const renderCategories = (arr) =>
     arr.map((item) => {
@@ -107,7 +100,11 @@ const FilterProducts = (props) => {
         {price}
       </select>
       <div className="filter__search">
-        <input type="text" placeholder="Print item name" onChange={(e) => dispatch(setSearchInput(e.target.value))}/>
+        <input
+          type="text"
+          placeholder="Print item name"
+          onChange={(e) => dispatch(setSearchInput(e.target.value))}
+        />
       </div>
     </div>
   );
